@@ -4,46 +4,39 @@ import { Link } from 'expo-router';
 import styles from '@/app/styles/create_acc';
 import google_logo from '@/assets/images/google.png';
 import facebook_logo from '@/assets/images/facebook_logo.png';
-import account from '@/app/styles/appwriteConfig'; // Import Appwrite account instance
-import { ID } from 'appwrite'; // Import ID for unique user ID generation
+import { auth, createUserWithEmailAndPassword }from '@/app/styles/appwriteConfig';
+
 
 const createUser = async (email, password, name, setEmail, setPassword, setNumber, isChecked) => {
   if (!isChecked) {
-    alert('Please agree to the Terms of Service and Privacy Policy.');
+    alert("Please agree to the Terms of Service and Privacy Policy.");
     return;
   }
 
   if (!email || !password || !name) {
-    alert('Please fill in all required fields.');
+    alert("Please fill in all required fields.");
     return;
   }
 
   if (password.length < 8) {
-    alert('Password must be at least 8 characters.');
+    alert("Password must be at least 8 characters.");
     return;
   }
 
   try {
-    // Create a new user with a unique ID, email, password, and name
-    const response = await account.create(
-      ID.unique(), // Generates a unique ID for the user
-      email,
-      password,
-      name // Optional: Full name
-    );
-    console.log('Account created successfully:', response);
-    alert('Account created successfully! Please log in.');
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    console.log("Account created successfully:", userCredential.user);
+    alert("Account created successfully! Please log in.");
 
-    // Clear the form after success
-    setEmail('');
-    setPassword('');
-    setNumber('');
+    // Clear input fields
+    setEmail("");
+    setPassword("");
+    setNumber("");
   } catch (error) {
-    console.error('Account creation failed:', error);
-    alert('Account creation failed: ' + error.message);
+    console.error("Account creation failed:", error);
+    alert("Account creation failed: " + error.message);
   }
 };
-
 const CreateAcc = () => {
   const [email, setEmail] = useState(''); // Using "email" as full name for simplicity; adjust if needed
   const [number, setNumber] = useState('');
@@ -132,10 +125,11 @@ const CreateAcc = () => {
           {/* Sign Up Button */}
           <TouchableOpacity
             style={styles.login_btn}
-            onPress={() => createUser(email, password, email, setEmail, setPassword, setNumber, isChecked)} // Using "email" as name
+            onPress={() => createUser(email, password, email, setEmail, setPassword, setNumber, isChecked)}
           >
             <Text style={styles.login_text}>Sign Up</Text>
           </TouchableOpacity>
+
 
           {/* Footer */}
           <View style={styles.footer_signin}>

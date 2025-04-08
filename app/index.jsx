@@ -6,23 +6,25 @@ import facebook_logo from '@/assets/images/facebook_logo.png'
 import apple_logo from '@/assets/images/appl_logo.png' 
 import { Link } from 'expo-router';
 import styles from '@/app/styles/index' // link para sa css
-import account from '@/app/styles/appwriteConfig';
-
+import { auth, signInWithEmailAndPassword } from '@/app/styles/appwriteConfig';
 
 
 
 const loginUser = async (email, password) => {
-  try{
-    console.log(account);
-    
-    const response = await account.createEmailPasswordSession('email@example.com', 'password'); 
-    console.log('Login successful:', response);
-    alert('Logged in successfully!');
-  }catch (error) {
-    console.error('Login failed:', error);
-    alert('Login failed: ' + error.message);
+  try {
+    console.log("Attempting login with:");
+    console.log("Email:", email);
+    console.log("Password:", password);
+
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    console.log("Login successful:", userCredential.user);
+    alert("Logged in successfully!");
+  } catch (error) {
+    console.error("Login failed:", error);
+    alert("Login failed: " + error.message);
   }
-}
+};
+
 
 const app = () => {
   const [email, setEmail] = useState('');
