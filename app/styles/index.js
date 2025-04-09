@@ -3,11 +3,12 @@ import { StyleSheet } from "react-native"; // ess
 const styles = StyleSheet.create({
     container: {
       flex: 1,
+      margin:0,
+      padding:10,
       flexDirection: 'column',   
-      justifyContent: 'flex-start',   
+      justifyContent: 'center',   
       alignItems: 'center',       
       backgroundColor: 'white',
-      paddingTop: '30%'
     },
     text: {
       color: 'black',
@@ -27,7 +28,8 @@ const styles = StyleSheet.create({
       color : "#666666"
     },
     input_email: {
-      width: '330',
+      width: '100%',
+      maxWidth: 400,
       height: 56,
       borderWidth: 1,
       borderColor: '#ccc',
@@ -38,7 +40,8 @@ const styles = StyleSheet.create({
       backgroundColor: '#F5F5F5',
     },
     input_password: {
-      width: 330,
+      width: '100%',
+      maxWidth: 400,
       height: 56,
       borderWidth: 1,
       borderColor: '#ccc',
@@ -46,23 +49,27 @@ const styles = StyleSheet.create({
       paddingHorizontal: 10,
       fontSize: 16,
       marginTop: 10,
+
       backgroundColor: '#F5F5F5',
     },
     Link: {
-      marginTop: 15,
-      paddingLeft: '55%',
+      textAlign: 'right',
+      width: '100%',
+      maxWidth: 400,
+      marginTop: 10,
+      textDecorationLine: 'underline',
       fontWeight: 'medium',
       fontSize: 14,
       color: '#4CAF50',
     },
     login_btn: {
-        width: '330',
+        width: '100%',
+        maxWidth: 300,
         height: 56,
         borderWidth: 1,
         borderColor: '#ccc',
         borderRadius: 9999,
         paddingHorizontal: 10,
-        fontSize: 16,
         marginTop: 20,
         justifyContent: 'center',
         alignItems: 'center',
@@ -70,6 +77,7 @@ const styles = StyleSheet.create({
     },
     login_text: {
       fontWeight: 'semibold',
+      fontSize: 20,
       color: '#FFFFFF'
     },
     msg: {
@@ -90,7 +98,8 @@ const styles = StyleSheet.create({
       width: '80%',
     },
     google_btn: {
-      width: 103.3,
+      width:'100%',
+      maxWidth: 103.3,
       height: 48,
       borderWidth: 1,
       borderColor: '#ccc',
@@ -114,7 +123,8 @@ const styles = StyleSheet.create({
   height: 30
   },
   social_btn:{
-  width: 103.3,
+  width:'100%',
+  maxWidth: 103.3,
   height: 48,
   borderRadius: 12,
   justifyContent: 'center',
@@ -125,6 +135,7 @@ const styles = StyleSheet.create({
   marginBottom: '7%'
   },
   signup:{
+    marginTop: 20,
     color: "black",
     fontSize: 15
   },

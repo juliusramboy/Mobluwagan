@@ -1,20 +1,20 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
-    container: {
+      container: {
         flex: 1,
+        margin:0,
+        padding:10,
         flexDirection: 'column',   
-        justifyContent: 'flex-start',   
+        justifyContent: 'center',   
         alignItems: 'center',       
         backgroundColor: 'white',
-        paddingTop: '30%'
       },
       txt_container: {
-        fontFamily: 'Inter',
-        alignSelf: 'flex-start', // Aligns the text view to the left
-        textAlign: 'left', // Aligns the text inside the Text component to the left
-        marginLeft: '20',
-        marginTop: '-10%'
+        fontFamily: 'Inter', 
+        justifyContent: 'flex-end',
+        marginRight: '20%',
+        marginTop: '10%'
       },
       Text: {
         color: '#4CAF50',
@@ -27,26 +27,28 @@ const styles = StyleSheet.create({
         color: '#666666'
     },
     logo_container: {
-      flexDirection: 'row',
+      display: 'flex',
       justifyContent: 'center',
       alignContent: 'center',
       gap: 10,
-      marginTop: 20
+      marginTop: 20,
+      width:'100%',
+      maxWidth: 342,
     },
     logo:{
       width: 30,
       height: 30
     },
     social_btn:{
-      width: 165,
+      width: 342,
       height: 52,
-      borderRadius: 9999,
+      borderRadius: 12,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: 'white',
-      elevation: 3,
-      borderColor: 'E5E5E5',
-      marginBottom: '7%'
+      backgroundColor: 'lightgray',
+      elevation: 8,
+      marginBottom: 12
+
       },
       msg: {
         fontSize: 16,
@@ -58,7 +60,7 @@ const styles = StyleSheet.create({
       },
       line: {
         flex: 1,
-        height: 2,
+        height: 1,
         backgroundColor: '#ccc',
         
       },
@@ -70,7 +72,7 @@ const styles = StyleSheet.create({
       },
       input_email: {
         width: '330',
-        height: 56,
+        height: 45,
         borderWidth: 1.5,
         borderColor: '#ccc',
         borderRadius: 10,
@@ -79,9 +81,20 @@ const styles = StyleSheet.create({
         borderColor: 'gray',
         backgroundColor: '#F5F5F5',
       },
+      input_name: {
+        width: 330,
+        height: 45,
+        borderWidth: 1.5,
+        borderColor: '#ccc',
+        borderRadius: 8,
+        paddingHorizontal: 10,
+        fontSize: 16,
+        borderColor: 'gray',
+        backgroundColor: '#F5F5F5',
+      },
       input_password: {
         width: 330,
-        height: 56,
+        height: 45,
         borderWidth: 1.5,
         borderColor: '#ccc',
         borderRadius: 8,
@@ -92,7 +105,7 @@ const styles = StyleSheet.create({
       },
       input_number: {
         width: 330,
-        height: 56,
+        height: 45,
         borderWidth: 1.5,
         borderColor: '#ccc',
         borderRadius: 8,
@@ -101,9 +114,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#F5F5F5',
         elevation: 3,
         borderColor: 'gray',
-      },
-      fillup_box: {
-        marginTop: 20
       },
       box_name:{
         marginBottom: 10,
