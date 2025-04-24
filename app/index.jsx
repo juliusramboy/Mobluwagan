@@ -19,7 +19,7 @@ const loginUser = async (email, password) => {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     console.log("Login successful:", userCredential.user);
     alert("Logged in successfully!");
-    router.push("/Otp_panel")
+    router.push("/approval")
   } catch (error) {
     console.error("Login failed:", error);
     alert("Login failed: " + error.message);
@@ -27,7 +27,7 @@ const loginUser = async (email, password) => {
 };
 
 
-const app = () => {
+const app = ({ navigation }) => {
   const rounter = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -53,7 +53,7 @@ const app = () => {
         secureTextEntry={true}
       />
 
-      <Link href={"/Otp_panel"} style={styles.Link}>Forgot password?</Link>
+      <Link href={"/approval"} style={styles.Link}>Forgot password?</Link>
       
 
       {/* login Button */}

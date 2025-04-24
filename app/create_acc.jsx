@@ -3,10 +3,13 @@ import React, { useState } from 'react';
 import { Link, router, useRouter } from 'expo-router';
 import styles from '@/app/styles/create_acc';
 import google_logo from '@/assets/images/google.png';
-import { auth, createUserWithEmailAndPassword }from '@/app/styles/firebaseConfig';
+import { auth, createUserWithEmailAndPassword}from '@/app/styles/firebaseConfig';
+import { collection, addDoc } from 'firebase/firestore';
+import { db } from '@/app/styles/firebaseConfig';
+import { doc, setDoc } from 'firebase/firestore'; 
 
 
-const createUser = async (name, email, number, password, setEmail, setPassword, setNumber,setName, isChecked) => {
+const createUser = async (name, email, number, password, setEmail, setPassword, setNumber, setName, isChecked) => {
   if (!isChecked) {
     alert("Please agree to the Terms of Service and Privacy Policy.");
     return;
@@ -24,8 +27,19 @@ const createUser = async (name, email, number, password, setEmail, setPassword, 
 
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    console.log("Account created successfully:", userCredential.user);
+    const user = userCredential.user; // ✅ FIX: define user
+
+    console.log("Account created successfully:", user);
     alert("Account created successfully! Please log in.");
+
+    const userRef = doc(db, "users", user.uid); // ✅ Now user is defined
+    await setDoc(userRef, {
+      uid: user.uid,
+      name,
+      email,
+      number,
+      isVerified: false
+    });
 
     // Clear input fields
     setName("");
@@ -33,12 +47,14 @@ const createUser = async (name, email, number, password, setEmail, setPassword, 
     setNumber("");
     setPassword("");
 
-    router.push("/Otp_panel")
+    router.push("/approval");
+
   } catch (error) {
     console.error("Account creation failed:", error);
     alert("Account creation failed: " + error.message);
   }
 };
+
 const CreateAcc = () => {
   const rounter = useRouter();
   const [name, setName] = useState('');
