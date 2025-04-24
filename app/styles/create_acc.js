@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
       txt_container: {
         fontFamily: 'Inter', 
         justifyContent: 'flex-end',
-        marginRight: '20%',
+        marginRight: '25%',
         marginTop: '10%'
       },
       Text: {
