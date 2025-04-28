@@ -6,20 +6,36 @@ import facebook_logo from '@/assets/images/facebook_logo.png'
 import apple_logo from '@/assets/images/appl_logo.png' 
 import { Link, router, useRouter } from 'expo-router';
 import styles from '@/app/styles/index' // link para sa css
-import { auth, signInWithEmailAndPassword } from '@/app/styles/firebaseConfig';
-
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { db } from '@/app/styles/firebaseConfig';
+import { doc, getDoc } from 'firebase/firestore';
 
 
 const loginUser = async (email, password) => {
   try {
-    console.log("Attempting login with:");
-    console.log("Email:", email);
-    console.log("Password:", password);
-
+    const auth = getAuth();
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
-    console.log("Login successful:", userCredential.user);
-    alert("Logged in successfully!");
-    router.push("/approval")
+    const user = userCredential.user;
+
+    console.log("Login successful:", user.email);
+
+    // 🔍 Get user document from Firestore
+    const userDocRef = doc(db, 'users', user.uid);
+    const userSnapshot = await getDoc(userDocRef);
+
+    if (userSnapshot.exists()) {
+      const userData = userSnapshot.data();
+      
+      if (userData.isVerified) {
+        router.push("/dashboard"); // ✅ Verified users
+      } else {
+        alert("You're not verified yet.");
+        router.push("/approval"); // ❌ Not verified users
+      }
+    } else {
+      alert("User document not found in database.");
+    }
+
   } catch (error) {
     console.error("Login failed:", error);
     alert("Login failed: " + error.message);
@@ -98,4 +114,3 @@ const app = ({ navigation }) => {
 
 
 export default app;
-

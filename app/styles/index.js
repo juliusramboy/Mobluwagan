@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
       backgroundColor: 'white',
     },
     text: {
-      color: 'black',
+      color:  'black',
       fontSize: 30,
       fontFamily: 'Inter',       
       fontWeight: 'bold',

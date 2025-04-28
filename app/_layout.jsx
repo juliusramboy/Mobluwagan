@@ -34,6 +34,7 @@ export default function RootLayout() {
         <Stack.Screen name ="index" options={{title: "Login", headerShown: false}} />
         <Stack.Screen name ="create_acc" options={{title: "Create Acc", headerShown: false}} />
         <Stack.Screen name ="approval" options={{title: "approval", headerShown: false}} />
+        <Stack.Screen name ="dashboard" options={{title: "dashboard", headerShown: false}} />
         <Stack.Screen name="+not-found" />
       </Stack>
       <StatusBar style="true" />

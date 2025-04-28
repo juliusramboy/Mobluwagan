@@ -3,10 +3,11 @@ import React, { useState } from 'react';
 import { Link, router, useRouter } from 'expo-router';
 import styles from '@/app/styles/create_acc';
 import google_logo from '@/assets/images/google.png';
-import { auth, createUserWithEmailAndPassword}from '@/app/styles/firebaseConfig';
+import { auth } from '@/app/styles/firebaseConfig';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '@/app/styles/firebaseConfig';
-import { doc, setDoc } from 'firebase/firestore'; 
+import { getDoc, doc, setDoc } from 'firebase/firestore';
 
 
 const createUser = async (name, email, number, password, setEmail, setPassword, setNumber, setName, isChecked) => {
