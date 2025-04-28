@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
 
     otp_container: {
-        flex: 1,
+        flex:  1,
         margin:0,
         padding:10,
         flexDirection: 'column',   

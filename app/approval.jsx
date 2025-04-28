@@ -5,7 +5,7 @@ import { useRouter } from 'expo-router';
 import styles from '@/app/styles/approval';
 import logo_img from '@/assets/images/logo_approval.png';
 import { auth, db } from '@/app/styles/firebaseConfig'; // Import services from config
-import { doc, getDoc, onSnapshot } from 'firebase/firestore'; // Import Firestore functions directly
+import { doc, getDoc, onSnapshot } from 'firebase/firestore'; //  Import Firestore functions directly
 
 const Approval = () => {
   const [isVerified, setIsVerified] = useState(false);
@@ -100,7 +100,7 @@ const Approval = () => {
           Please wait for the admin to approve your account. {'\n'}
           We will notify you once approved.
         </Text>
-        <Text style={styles.reminder}>We'll notify you once approved</Text>
+        <Text style={styles.reminder}>We'll notify you once approved.</Text>
         
         {/* Add logout button */}
         <TouchableOpacity 

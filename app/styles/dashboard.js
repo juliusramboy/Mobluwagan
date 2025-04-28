@@ -3,7 +3,7 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 
 const styles = StyleSheet.create({
     dashboard:{
-        height: hp(100),
+        height:  hp(100),
         backgroundColor: 'white',
     },
     header:{
