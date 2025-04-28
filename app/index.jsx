@@ -27,7 +27,6 @@ const loginUser = async (email, password) => {
       const userData = userSnapshot.data();
       
       if (userData.isVerified) {
-        alert("Welcome back! You're verified.");
         router.push("/dashboard"); // ✅ Verified users
       } else {
         alert("You're not verified yet.");
