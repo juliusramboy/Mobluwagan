@@ -7,7 +7,8 @@ import { auth } from '@/app/styles/firebaseConfig';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '@/app/styles/firebaseConfig';
-import { getDoc, doc, setDoc } from 'firebase/firestore';
+import { getDoc, doc, setDoc} from 'firebase/firestore';
+
 
 
 const createUser = async (name, email, number, password, setEmail, setPassword, setNumber, setName, isChecked) => {
@@ -34,13 +35,27 @@ const createUser = async (name, email, number, password, setEmail, setPassword, 
     alert("Account created successfully! Please log in.");
 
     const userRef = doc(db, "users", user.uid); // ✅ Now user is defined
-    await setDoc(userRef, {
-      uid: user.uid,
-      name,
-      email,
-      number,
-      isVerified: false
-    });
+      await setDoc(userRef, {
+        uid: user.uid,
+        name,
+        email,
+        number,
+        isVerified: false
+      });
+
+      // Now setting the balance reference
+      const balanceRef = doc(db, `balances`, user.uid);
+      await setDoc(balanceRef, {
+        current_balance: 0,
+      });
+
+      // Set for the payment history
+      const paymentHistoryRef = collection(db, `payment_history/${user.uid}/transactions`)
+      await addDoc(paymentHistoryRef, {
+        amount: 0,
+        date: new Date().toISOString(),
+        description: 'new acc created',
+      });
 
     // Clear input fields
     setName("");

@@ -1,7 +1,7 @@
 // app/styles/firebaseConfig.js
 import { initializeApp } from 'firebase/app';
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, doc } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword} from 'firebase/auth';
+import { getFirestore, doc, setDoc } from 'firebase/firestore';
 
 // Your Firebase configuration
 const firebaseConfig = {
@@ -21,7 +21,7 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 // ✅ Export services
-export { auth, db, signInWithEmailAndPassword, createUserWithEmailAndPassword, doc };
+export { auth, db, signInWithEmailAndPassword, createUserWithEmailAndPassword, doc, setDoc  };
 
 // ✅ Default export
 export default app;
