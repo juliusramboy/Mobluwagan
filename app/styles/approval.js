@@ -7,8 +7,8 @@ const styles = StyleSheet.create({
         margin:0,
         padding:10,
         flexDirection: 'column',   
-        justifyContent: 'flex-start',   
-        alignItems: 'flex-start',       
+        justifyContent: 'center',   
+        alignItems: 'center',       
         backgroundColor: 'white',
     },
     text_container: {
